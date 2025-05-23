@@ -20,7 +20,6 @@ h4{
     background-image: url("images/2.png");
     background-size:  100% 93.6%;
     background-repeat: no-repeat;
-    /* background-size: cover; */
 }
 .fixed-top{
     background-color: #800000 !important;
@@ -97,8 +96,6 @@ h4{
     font-family: 'Courier New', Courier, monospace;
 }
 
-
-/* contact */
 .contact-wrapper{
     background-color: #800000;
 }
@@ -106,8 +103,6 @@ h4{
 .custom-col {
     padding: 15px;
 }
-
-
 
 .content{
     padding: relative;
@@ -168,26 +163,3 @@ h4{
     margin-bottom: 0.5em;
     text-transform: uppercase;
 } 
-
-
-
-
-/* footer
-ul{
-    display: flex;
-  list-style: none;
-  justify-content: center;
-  padding-top: 20px;
-}
-ul li{
-    flex-direction: row;
-}
-ul li a{
-    text-decoration: none;
-    color: #b5b2b2;
-    padding: 20px;
-}
-ul li a:hover{
-    color: #f9f2f2;
-}
- */

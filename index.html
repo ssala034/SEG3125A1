@@ -6,7 +6,7 @@
     <title>Shuaib's Portfolio</title>
     <!--Bootstrap CSS-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="./fonts/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">    
     <link rel="stylesheet" href="style.css">
     
 </head>
@@ -43,14 +43,16 @@
         </nav>
         <div class="container py-5">
             <div class="row mt-5">
-                <div class="col-md-1 pt-5 text-center">
-                    <a href="https://linkedin.com/in/shuaib-salad"><i class="fab fa-linkedin mt-4 d-block"></i></a>
-                    <a href="https://github.com/ssala034"><i class="fab fa-github mt-4 d-block"></i></a>
+                <div class="col-md-1 pt-5 text-center d-flex flex-column align-items-center">
+                    <a href="https://linkedin.com/in/shuaib-salad" class="mb-3"><i class="bi bi-linkedin"></i></a>
+                    <a href="https://github.com/ssala034"><i class="bi bi-github"></i></a>
                 </div>
                 <div class="col-md-5 pt-5 intro">
                     <h3 class="mb-4">Hello, I'm</h3>
                     <h1 class="mb-4">Shuaib Salad</h1>
-                    <h4 class="mb-4">Professional Developer & UI/UX Enthusiast</h4>
+                    <h4 class="mb-4">
+                        And I'm a <span id="dynamic-role">UI/UX Enthusiast</span>
+                    </h4>
                     <p class="mb-4">Software engineering student at UOttawa.</p>
                     <a href="#projects" class="btn btn-primary mt-5">View Projects</a>
                 </div>
@@ -77,7 +79,8 @@
                             <a href="https://getbootstrap.com/docs/5.0/getting-started/introduction/"><img src="images/OIP.jpg" alt="Resource 1" style="width:50px; height:50px;"></a>
                             <a href="https://www.w3schools.com/"><img src="images/w3schools-1536.png" alt="Resource 2" style="width:50px; height:50px;"></a>
                             <a href="https://www.nngroup.com/"><img src="images/nielsen-norman-group-certification.webp" alt="Resource 3" style="width:50px; height:50px;"/></a>
-                        </div>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/setTimeout"><img src="images/js.jpg" alt="Resource 4" style="width:50px; height:50px;"></a>
+                        </div>  
                     </div>
 				</div>
 
@@ -165,67 +168,61 @@
     
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="./fonts/js/all.min.js"></script>
+    <script>
+    // JavaScript for rotating role titles with animation
+    const roles = [
+        "UI/UX Enthusiast",
+        "Software Engineer",
+        "Problem Solver",
+    ];
+    const prefix = "And I'm a ";
+    const dynamicRole = document.getElementById('dynamic-role');
+    let current = 0;
+
+    function animateOut(text, callback) {
+        let len = text.length;
+        function contract() {
+            if (len > 0) {
+                dynamicRole.textContent = text.slice(0, len - 1);
+                len--;
+                setTimeout(contract, 30);
+            } else {
+                callback();
+            }
+        }
+        contract();
+    }
+
+    function animateIn(newText) {
+        let i = 0;
+        function expand() {
+            if (i <= newText.length) {
+                dynamicRole.textContent = newText.slice(0, i);
+                i++;
+                setTimeout(expand, 30);
+            }
+        }
+        expand();
+    }
+
+    function rotateRole() {
+        // Wait 2s, then contract, then show next, then expand
+        setTimeout(() => {
+            animateOut(dynamicRole.textContent, () => {
+                current = (current + 1) % roles.length;
+                animateIn(roles[current]);
+                // Schedule next rotation after expand
+                setTimeout(rotateRole, 2000 + roles[current].length * 30);
+            });
+        }, 2000);
+    }
+
+    // Initialize with first role
+    dynamicRole.textContent = roles[0];
+    // Start rotation
+    rotateRole();
+</script>
 
 
 </body>
 </html>
-
-
-
-
-
-<!-- 
-
-.*<div class="row">
-                Service
-                <div class="col-md-4 mt-4">
-                    <div class="content">
-                        <a href="#">
-                            <div class="content-overlay"></div>
-                            <img  class="content-image" src="images/project (1).jpg">
-                            <div class="content-details fadeIn-bottom">
-                                <h3 class="content-title">Service Site</h3>
-                                <p class="content-text"> <i class="fa fa-map-marker"></i>USA</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-4 mt-4">
-                    <div class="content">
-                        <a href="#">
-                            <div class="content-overlay"></div>
-                            <img src="images/iStock-1334436084.jpg" class="content-image" alt="">
-                            <div class="content-details fadeIn-bottom">
-                                <h3 class="content-title">Gaming Site</h3>
-                                <p class="content-text"> <i class="fa fa-map-marker" aria-hidden="true"></i>USA</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-4 mt-4">
-                    <div class="content">
-                        <a href="#">
-                            <div class="content-overlay"></div>
-                            <img src="images/images.jpg" class="content-image" alt="">
-                            <div class="content-details fadeIn-bottom">
-                                <h3 class="content-title">E-commerce Site</h3>
-                                <p class="content-text"> <i class="fa fa-map-marker" aria-hidden="true"></i>Canada</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-4 mt-4">
-                    <div class="content">
-                        <a href="#">
-                            <div class="content-overlay"></div>
-                            <img src="images/download.jpg" class="content-image" alt="">
-                            <div class="content-details fadeIn-bottom">
-                                <h3 class="content-title">Analytics Site</h3>
-                                <p class="content-text"> <i class="fa fa-map-marker" aria-hidden="true"></i>Africa</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-            </div> -->
