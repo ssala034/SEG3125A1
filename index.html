@@ -51,7 +51,7 @@
                     <h3 class="mb-4">Hello, I'm</h3>
                     <h1 class="mb-4">Shuaib Salad</h1>
                     <h4 class="mb-4">
-                        And I'm a <span id="dynamic-role">UI/UX Enthusiast</span>
+                        And I'm a <span id="dynamic-role"></span>
                     </h4>
                     <p class="mb-4">Software engineering student at UOttawa.</p>
                     <a href="#projects" class="btn btn-primary mt-5">View Projects</a>
@@ -175,7 +175,6 @@
         "Software Engineer",
         "Problem Solver",
     ];
-    const prefix = "And I'm a ";
     const dynamicRole = document.getElementById('dynamic-role');
     let current = 0;
 
@@ -206,7 +205,7 @@
     }
 
     function rotateRole() {
-        // Wait 2s, then contract, then show next, then expand
+        // Wait then contract, then show next, then expand
         setTimeout(() => {
             animateOut(dynamicRole.textContent, () => {
                 current = (current + 1) % roles.length;
